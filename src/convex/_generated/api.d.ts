@@ -16,6 +16,9 @@ import type {
 import type * as auth_emailOtp from "../auth/emailOtp.js";
 import type * as auth from "../auth.js";
 import type * as http from "../http.js";
+import type * as marketData from "../marketData.js";
+import type * as portfolio from "../portfolio.js";
+import type * as trades from "../trades.js";
 import type * as users from "../users.js";
 
 /**
@@ -30,6 +33,9 @@ declare const fullApi: ApiFromModules<{
   "auth/emailOtp": typeof auth_emailOtp;
   auth: typeof auth;
   http: typeof http;
+  marketData: typeof marketData;
+  portfolio: typeof portfolio;
+  trades: typeof trades;
   users: typeof users;
 }>;
 export declare const api: FilterApi<

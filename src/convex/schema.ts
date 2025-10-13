@@ -32,12 +32,36 @@ const schema = defineSchema(
       role: v.optional(roleValidator), // role of the user. do not remove
     }).index("email", ["email"]), // index for the email. do not remove or modify
 
-    // add other tables here
+    trades: defineTable({
+      userId: v.id("users"),
+      symbol: v.string(),
+      type: v.union(v.literal("BUY"), v.literal("SELL")),
+      quantity: v.number(),
+      price: v.number(),
+      algorithm: v.string(),
+      profit: v.number(),
+      status: v.string(),
+    }).index("by_user", ["userId"]),
 
-    // tableName: defineTable({
-    //   ...
-    //   // table fields
-    // }).index("by_field", ["field"])
+    portfolios: defineTable({
+      userId: v.id("users"),
+      balance: v.number(),
+      totalValue: v.number(),
+      holdings: v.array(v.object({
+        symbol: v.string(),
+        quantity: v.number(),
+        avgPrice: v.number(),
+      })),
+    }).index("by_user", ["userId"]),
+
+    marketData: defineTable({
+      symbol: v.string(),
+      price: v.number(),
+      change: v.number(),
+      volume: v.number(),
+      high: v.number(),
+      low: v.number(),
+    }).index("by_symbol", ["symbol"]),
   },
   {
     schemaValidation: false,
