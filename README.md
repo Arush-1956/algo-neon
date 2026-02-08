@@ -1,6 +1,6 @@
 ## Overview
 
-This project uses the following tech stack:
+Tech Stack
 - Vite
 - Typescript
 - React Router v7 (all imports from `react-router` instead of `react-router-dom`)
